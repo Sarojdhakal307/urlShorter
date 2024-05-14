@@ -1,17 +1,25 @@
 const express = require('express');
+const path = require('path');
+
 const homeroutes = express();
 const shortID = require('shortid');
+const render = require('ejs');
 // const bodyParser = require('body-parser');
 const urlsDB = require('../models/urlsDB');
 const fs = require('fs');
 
 const bodyParser = require('body-parser');
 homeroutes.use(express.json());
-homeroutes.use(bodyParser.json());
-homeroutes.use(express.urlencoded({ extended: true }));
+// homeroutes.use(bodyParser.json());
+// homeroutes.use(express.urlencoded({ extended: true }));
+
+homeroutes.set('views', path.join(__dirname, 'views'));
+homeroutes.set('view engine', 'ejs') ;
 
 homeroutes.get('/' , (req,res) => {
-    res.send('Welcome to URL Shortner');
+   console.log('inside get');
+//    res.send("I am inside get")
+    res.render('index');
 });
 
 homeroutes.post('/' , async (req,res) => {
