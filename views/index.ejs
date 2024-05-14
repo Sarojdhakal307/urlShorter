@@ -4,11 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>url short</title>
+    <style>
+        body{
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#009ec3+0,00b7ea+100 */
+background: #009ec3; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #009ec3 0%, #00b7ea 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  #009ec3 0%,#00b7ea 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  #009ec3 0%,#00b7ea 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#009ec3', endColorstr='#00b7ea',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.wrapper{
+  height:10em;
+  width: 50vw;
+  border:1px solid black;
+  position:relative;
+  top:30vh;
+  left:25vw;
+  background:white;
+  
+}
+.url-input{
+  position:absolute;
+  height:5em;
+  width: 95%;
+  left:2.5%;
+  margin:auto;
+  box-sizing:border-box;
+  
+}
+
+.url-input::placeholder{
+  font-size:1.5em
+}
+
+h1{
+  text-align:center;
+}
+    </style>
 </head>
 <body>
     <div class="wrapper">
       <h1>Make Your URL Shorter</h1>
-      <input placeholder="Paste URL to shorten here..." class="url-input" />
+      <input type="text" placeholder="Paste URL to shorten here..." class="url-input" />
       <p><%= title %></p> <!-- Example of embedding EJS code -->
     </div>
 </body>
