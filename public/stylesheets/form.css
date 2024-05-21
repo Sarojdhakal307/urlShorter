@@ -1,0 +1,71 @@
+body {
+  /* Background gradient animation */
+  background: linear-gradient(135deg, #009ec3, #00b7ea);
+  background-size: 400% 400%;
+  animation: gradientBackground 15s ease infinite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+@keyframes gradientBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.wrapper {
+  width: 50vw;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.userUrl {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #00b7ea;
+  border-radius: 5px;
+  font-size: 1.2em;
+}
+
+.userUrl::placeholder {
+  font-size: 1.2em;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 5px;
+  background-color: #00b7ea;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #009ec3;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+.result a {
+  color: #002ac3;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.result a:hover {
+  color: #00b7ea;
+}
