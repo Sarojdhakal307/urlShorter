@@ -67,13 +67,15 @@ homeroutes.get('/urls/:shorturl' , async (req,res) => {
             res.redirect(urlDoc.userUrl); // Redirect to the long URL
         } else {
             console.log(`Short URL not found`);
-            res.status(404).json({ message: 'Short URL not found' });
+        res.status(404).render('404Error');
+
+            // res.status(404).json({ message: 'Short URL not found' });
         }
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Error searching for URL' });
-    }
-});
+        // res.status(500).json({ message: 'Error searching for URL' })
+        // res.status(404).render('404Error');
+}});
 
 
 module.exports = homeroutes;

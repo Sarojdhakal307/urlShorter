@@ -3,58 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>url short</title>
+    <title>URL Shortener</title>
     <style>
-        body{
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#009ec3+0,00b7ea+100 */
-background: #009ec3; /* Old browsers */
-background: -moz-linear-gradient(-45deg,  #009ec3 0%, #00b7ea 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(-45deg,  #009ec3 0%,#00b7ea 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(135deg,  #009ec3 0%,#00b7ea 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#009ec3', endColorstr='#00b7ea',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+        body {
+            /* Background gradient animation */
+            background: linear-gradient(135deg, #009ec3, #00b7ea);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
 
-}
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-.wrapper{
-  height:auto;
-  width: 50vw;
-  border:1px solid black;
-  position:relative;
-  top:30vh;
-  left:25vw;
-  background:white;
-  
-}
-.userUrl{
-  /* position:absolute; */
-  height:2em;
-  width: 60%;
-  left:2.5%;
-  margin:10PX;
-  box-sizing:border-box;
-  
-}
+        .wrapper {
+            width: 50vw;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
 
-.url-input::placeholder{
-  font-size:1.5em
-}
+        .userUrl {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #00b7ea;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
 
-h1{
-  text-align:center;
-}
+        .userUrl::placeholder {
+            font-size: 1.2em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            background-color: #00b7ea;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #009ec3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .result a {
+            color: #002ac3;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .result a:hover {
+            color: #00b7ea;
+        }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
 </head>
 <body>
     <div class="wrapper">
-     <form action="/urls" method="POST">
-      <h1>Make Your URL Shorter</h1>
-      <input type="text" name="userUrl" class="userUrl" placeholder="Enter your URL here">
-      <button type="submit" >Generated</button>
-      <%if(locals.id){ %>
-        <p> UrlGenerated :  <a style="color:blue" href="<%=locals.id.displayshortUrl %>"> <%=locals.id.displayshortUrl %> </a></p>
-      <%}%>
-
-     </form>
+        <form action="/urls" method="POST" id="urlForm">
+            <h1>Make Your URL Shorter</h1>
+            <input type="text" name="userUrl" required class="userUrl" placeholder="Enter your URL here">
+            <button type="submit">Generate</button>
+            
+        </form>
+        
     </div>
+    <% if (locals.id) { %>
+        <p class="result">URL Generated: <a href="<%= locals.id.displayshortUrl %>"><%= locals.id.displayshortUrl %></a></p>
+    <% } %>
+    <script>
+        // GSAP animations
+        window.addEventListener('load', () => {
+            gsap.from('.wrapper', { duration: 1, y: -50, opacity: 0, ease: 'bounce' });
+            gsap.from('.userUrl', { duration: 1, delay: 0.5, x: -50, opacity: 0 });
+            gsap.from('button', { duration: 1, delay: 0.7, x: 50, opacity: 0 });
+            
+        });
+    </script>
 </body>
 </html>
