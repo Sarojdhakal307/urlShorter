@@ -25,7 +25,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#009ec3', end
   background:white;
   
 }
-.url-input1{
+.userUrl{
   /* position:absolute; */
   height:2em;
   width: 60%;
@@ -46,12 +46,15 @@ h1{
 </head>
 <body>
     <div class="wrapper">
-     <form action="/urls" method="POST"></form>
+     <form action="/urls" method="POST">
       <h1>Make Your URL Shorter</h1>
-      <input type="text" class="url-input1" placeholder="Enter your URL here">
-      <%urls.forEach(urls=>{ %>
-        <p><%= urls.shortUrl %> = <%=urls.userUrl %></p> 
-      <% }) %>
+      <input type="text" name="userUrl" class="userUrl" placeholder="Enter your URL here">
+      <button type="submit" >Generated</button>
+      <%if(locals.id){ %>
+        <p> UrlGenerated :  <a style="color:blue" href="<%=locals.id.displayshortUrl %>"> <%=locals.id.displayshortUrl %> </a></p>
+      <%}%>
+
+     </form>
     </div>
 </body>
 </html>

@@ -10,19 +10,34 @@ const fs = require('fs');
 
 const bodyParser = require('body-parser');
 homeroutes.use(express.json());
+homeroutes.use(express.urlencoded({ extended: false }));
 // homeroutes.use(bodyParser.json());
 // homeroutes.use(express.urlencoded({ extended: true }));
 
-homeroutes.set('views', path.join(__dirname, 'views'));
+// homeroutes.set('views', path.join(__dirname, 'views'));
 homeroutes.set('view engine', 'ejs') ;
+homeroutes.set('views', path.resolve('./views'));
 
-homeroutes.get('/' , (req,res) => {
+homeroutes.get('/' , async (req,res) => {
    console.log('inside get');
 //    res.send("I am inside get")
-    res.render('index');
+    const allurls =  await urlsDB.find({});
+    // console.log("All Urls : " + allurls);
+    return res.render('index' , { 
+        urls : allurls,
+    });
 });
+homeroutes.get('/urls' , async (req,res) => {
+    console.log('inside get');
+ //    res.send("I am inside get")
+     const allurls =  await urlsDB.find({});
+     // console.log("All Urls : " + allurls);
+     return res.render('form' , { 
+         urls : allurls,
+     });
+ });
 
-homeroutes.post('/' , async (req,res) => {
+homeroutes.post('/urls' , async (req,res) => {
     const body = await req.body;
     console.log('userURL' + body.userUrl);
     const shortid = shortID.generate();
@@ -31,14 +46,17 @@ homeroutes.post('/' , async (req,res) => {
     const urlsdata = new urlsDB({
         userUrl: body.userUrl,
         shortUrl: shortid,
-        displayshortUrl: 'http://localhost:4040/' + shortid
+        displayshortUrl: 'http://localhost:4040/urls/' + shortid
     });
    urlsdata.save().then((data) => {
        console.log('done' + data);});
-   res.end("searching Url : " + urlsdata.displayshortUrl);
+       return res.render('form',{
+        id: urlsdata,
+       })
+//    res.end("searching Url : " + urlsdata.displayshortUrl);
 });
 
-homeroutes.get('/:shorturl' , async (req,res) => {
+homeroutes.get('/urls/:shorturl' , async (req,res) => {
     const shorturl = req.params.shorturl;
     try {
         // Search for the URL document in the database
