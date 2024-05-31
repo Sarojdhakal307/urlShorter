@@ -6,6 +6,7 @@ const shortID = require('shortid');
 const render = require('ejs');
 // const bodyParser = require('body-parser');
 const urlsDB = require('../models/urlsDB');
+// const userDb = require('../models/userDb');
 const fs = require('fs');
 
 const bodyParser = require('body-parser');
@@ -18,26 +19,29 @@ homeroutes.use(express.urlencoded({ extended: false }));
 homeroutes.set('view engine', 'ejs') ;
 homeroutes.set('views', path.resolve('./views'));
 
+// homeroutes.get('/' , async (req,res) => {
+//    console.log('inside get');
+// //    res.send("I am inside get")
+//     const allurls =  await urlsDB.find({});
+//     // console.log("All Urls : " + allurls);
+//     return res.render('index' , { 
+//         urls : allurls,
+//     });
+// });
+
+
 homeroutes.get('/' , async (req,res) => {
-   console.log('inside get');
-//    res.send("I am inside get")
-    const allurls =  await urlsDB.find({});
-    // console.log("All Urls : " + allurls);
-    return res.render('index' , { 
-        urls : allurls,
-    });
-});
-homeroutes.get('/urls' , async (req,res) => {
     console.log('inside get');
  //    res.send("I am inside get")
-     const allurls =  await urlsDB.find({});
+    //  const allurls =  await urlsDB.find({});
      // console.log("All Urls : " + allurls);
      return res.render('form' , { 
-         urls : allurls,
+        //  urls : allurls,
      });
  });
 
-homeroutes.post('/urls' , async (req,res) => {
+homeroutes.post('/' , async (req,res) => {
+    console.log('inside post');
     const body = await req.body;
     console.log('userURL' + body.userUrl);
     const shortid = shortID.generate();
@@ -56,7 +60,7 @@ homeroutes.post('/urls' , async (req,res) => {
 //    res.end("searching Url : " + urlsdata.displayshortUrl);
 });
 
-homeroutes.get('/urls/:shorturl' , async (req,res) => {
+homeroutes.get('/:shorturl' , async (req,res) => {
     const shorturl = req.params.shorturl;
     try {
         // Search for the URL document in the database
