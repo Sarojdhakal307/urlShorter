@@ -18,7 +18,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         // required: true,
         unique: true,
-    }
+    },
+    createdUrls: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'urlsDB',
+    }],
 
 },{timestamps: true});
 

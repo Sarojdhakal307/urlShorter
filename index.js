@@ -17,17 +17,18 @@ connectMongodb("mongodb://127.0.0.1:27017/shorturl")
 .then(()=> console.log('mongodb connection : successful'));
 // urlsDB.createCollection().then(()=> console.log('collection created'));
 const homeroutes = require('./routes/urls');
-const signuproutes = require('./routes/user');
+const userRoutes = require('./routes/user');
+
+ require('./routes/user');
 const loginRoutes = require('./routes/login');
 
 const staticrouters = require('./routes/staticRoutrt');
 // app.use(express.json());
 
-
 app.use('/',staticrouters);
 
 app.use('/urls',onlylogin,homeroutes);
-app.use('/signup',signuproutes);
+app.use('/signup',userRoutes);
 app.use('/login',loginRoutes);
 
 

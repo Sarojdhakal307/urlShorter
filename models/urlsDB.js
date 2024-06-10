@@ -18,8 +18,17 @@ const userschema = new mongoose.Schema(
         time:{
             type:Date,
             default:Date.now()
+        },
+        visit:{
+            type: Number,
+        },
+        createdBy:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'userDb',
+            
         }
-    },{timestamps:true}
+    },{timestamps:true},
+   
 );
 
 const urlsDB = mongoose.model('urlsDB',userschema);

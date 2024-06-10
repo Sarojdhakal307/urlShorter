@@ -10,10 +10,10 @@ const path = require('path');
 loginRoutes.use(express.json());
 loginRoutes.use(express.urlencoded({ extended: false }));
 
-const userDb = require('../models/userDb');
-
 loginRoutes.set('view engine', 'ejs') ;
 loginRoutes.set('views', path.resolve('./views'));
+
+const userDb = require('../models/userDb');
 
 loginRoutes.get('/', function(req, res) {
     console.log("inside loginGet");

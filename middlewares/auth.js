@@ -13,3 +13,22 @@ async function onlylogin(req, res, next) {
 
 }
 module.exports = {onlylogin};
+
+
+
+
+// const {getUser} = require('../service/auth');
+// async function onlylogin(req, res, next){
+//     const userId = req.cookies.uid;
+
+//     if(!userId) return res.redirect("/login");
+
+//     const user = getUser(userId);
+//     console.log("User is : " + user);
+//     if(!user) return res.redirect("/login");
+
+//     req.user = user;
+//     next();
+// }
+
+// module.exports = {onlylogin};

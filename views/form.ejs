@@ -91,7 +91,8 @@
         
     </div>
     <% if (locals.id) { %>
-        <p class="result">URL Generated: <a href="<%= locals.id.displayshortUrl %>"><%= locals.id.displayshortUrl %></a></p>
+        <p class="result">URL Generated: <a href="<%= locals.id.displayshortUrl %>" id="generatedUrl"><%= locals.id.displayshortUrl %></a></p>
+        <button id="copyUrl">Copy</button>
     <% } %>
     <script>
         // GSAP animations
@@ -101,6 +102,21 @@
             gsap.from('button', { duration: 1, delay: 0.7, x: 50, opacity: 0 });
             
         });
+
+
+        // Copy URL to clipboard
+        const copyUrl = document.getElementById("copyUrl");
+
+        copyUrl.addEventListener('click',()=>{
+            const url = document.getElementById("generatedUrl").href;
+            
+// console.log(url);
+            navigator.clipboard.writeText(url).then(()=>{
+                copyUrl.textContent = "✔️  Copied!";
+                setTimeout(()=> copyUrl.textContent = 'Copy', 10000);
+            })
+            
+        })
     </script>
 </body>
 </html>

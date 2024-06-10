@@ -6,7 +6,7 @@ const shortID = require('shortid');
 const render = require('ejs');
 // const bodyParser = require('body-parser');
 const urlsDB = require('../models/urlsDB');
-// const userDb = require('../models/userDb');
+const userDb = require('../models/userDb');
 const fs = require('fs');
 
 const bodyParser = require('body-parser');
@@ -50,8 +50,10 @@ homeroutes.post('/' , async (req,res) => {
     const urlsdata = new urlsDB({
         userUrl: body.userUrl,
         shortUrl: shortid,
+        createdBy: req.user,
         displayshortUrl: 'http://localhost:4040/urls/' + shortid
     });
+    console.log('urlsdata : ' + urlsdata);
    urlsdata.save().then((data) => {
        console.log('done' + data);});
        return res.render('form',{
@@ -67,7 +69,8 @@ homeroutes.get('/:shorturl' , async (req,res) => {
         const urlDoc = await urlsDB.findOne({ "shortUrl": shorturl });
 
         if (urlDoc) {
-            console.log(`Associated long URL: ${urlDoc.userUrl}`);
+            urlDoc.visit++;
+            console.log(`Associated long URL: ${urlDoc.userUrl} , clicks : ${urlDoc.visit}  `);
             res.redirect(urlDoc.userUrl); // Redirect to the long URL
         } else {
             console.log(`Short URL not found`);
