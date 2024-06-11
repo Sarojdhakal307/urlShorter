@@ -49,7 +49,7 @@ Make sure you have the following installed on your machine:
 2. Start the application:
     ```bash
     npx nodemon
-    ```
+    
 3. Open your browser and navigate to `http://localhost:4040`
 
 ### Usage
@@ -61,5 +61,4 @@ Make sure you have the following installed on your machine:
 6. Use the shortened URL to redirect to the original long URL.
 
 ### Contributing
-    Contribution are welcome! Please open an issue or submit a pull request for any changes.
-    
+Contribution are welcome! Please open an issue or submit a pull request for any changes.
