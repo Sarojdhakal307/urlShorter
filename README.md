@@ -35,4 +35,6 @@ Make sure you have the following installed on your machine:
 
    ```bash
    git clone https://github.com/your-username/url-shortener.git
-   cd url-shortener
+   cd url-shortener```
+
+2. 
