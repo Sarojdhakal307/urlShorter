@@ -50,4 +50,16 @@ Make sure you have the following installed on your machine:
     ```bash
     npx nodemon
     ```
+3. Open your browser and navigate to `http://localhost:4040`
 
+### Usage
+1. Open the application in your browser.
+2. Navigate to the signup page to create a new account.
+3. After signing up, log in with your credentials.
+4. Once logged in, you can shorten URLs by entering a long URL in the input field and clicking "Shorten".
+5. The application will generate a shortened URL.
+6. Use the shortened URL to redirect to the original long URL.
+
+### Contributing
+    Contribution are welcome! Please open an issue or submit a pull request for any changes.
+    
