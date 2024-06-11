@@ -34,7 +34,20 @@ Make sure you have the following installed on your machine:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/url-shortener.git
-   cd url-shortener```
+   git clone https://github.com/Sarojdhakal307/urlShorter.git
+   cd url-shortener
+   ```
 
-2. 
+2. Install the dependencies:
+    ```bash
+    npm install express mongoose
+    ```
+### Running the Application
+1. Start MongoDB:
+    Make sure your MongoDB server is running. If MongoDB is not installed, follow the 
+    - [installation guid.](https://www.mongodb.com/docs/manual/installation/)
+2. Start the application:
+    ```bash
+    npx nodemon
+    ```
+
