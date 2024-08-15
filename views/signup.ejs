@@ -1,172 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup Form</title>
     <!-- <link rel="stylesheet" href="styles.css">. -->
     <style>
-        body {
-    font-family: 'Arial', sans-serif;
-    background-color: #00b7ea;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    color: black;
-}
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #00b7ea;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: black;
+      }
 
-.container {
-    background-color: #139bc168;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    animation: fadeIn 1s ease-in-out;
-}
+      .container {
+        background-color: #139bc168;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        animation: fadeIn 1s ease-in-out;
+      }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
 
-.input-group {
-    margin-bottom: 15px;
-}
+      .input-group {
+        margin-bottom: 15px;
+      }
 
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #272525;
-}
+      .input-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #272525;
+      }
 
-.input-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: border-color 0.3s;
-}
+      .input-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: border-color 0.3s;
+      }
 
-.input-group input:focus {
-    border-color: #021223;
-}
+      .input-group input:focus {
+        border-color: #021223;
+      }
 
-.btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #04293a;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+      .btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #04293a;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
 
-.btn:hover {
-    background-color: #0056b3;
-}
-.show-password{
-    position: relative;
-    bottom: 15px;
-    left: 180px;
-    margin: 0px;
-    color: #333;
-    /* position: inline; */
-}
-#error{
-    color: red;
-    text-align: center;
-    margin-top: 10px;
-}
-        
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      .show-password {
+        position: relative;
+        bottom: 15px;
+        left: 280px;
+        margin: 0px;
+        color: #333;
+        /* position: inline; */
+      }
+      #error {
+        color: red;
+        text-align: center;
+        margin-top: 10px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <form  action="/signup" method="POST" id="signup-form" >
-            <h2>Sign Up</h2>
-            <div class="input-group">
-                <label for="fullname">FullName</label>
-                <input type="text" id="fullname" name="fullname" required>
-            </div>
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            
-                <label for="password">Password</label>
-                <input type="password" id="password" class="password" name="password" required> 
+      <form action="/auth/signup" method="POST" id="signup-form">
+        <h2>Sign Up</h2>
+        <div class="input-group">
+          <label for="fullname">FullName</label>
+          <input type="text" id="fullname" name="fullname" required />
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
 
-                <!-- <input type="password" id="password" name="password" required> -->
-            </div>
-            <div class="show-password">
-                <label for="show-password">Show Password</label>
-                <input type="checkbox" id="show-password" onclick="togglePasswordVisibility()">
-            </div>
-            <div class="input-group">
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" name="confirmPassword" required>
-            </div>
-            
-            <button type="submit" class="btn">Sign Up</button>
-        </form>
-        <% if (message) { %>
-            <p id="error"><%= message %></p>
-            <% } %>
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="password"
+            name="password"
+            required
+          />
+        </div>
+        <div class="show-password">
+          <label for="show-password">Show Password</label>
+          <input
+            type="checkbox"
+            id="show-password"
+            onclick="togglePasswordVisibility()"
+          />
+        </div>
+        <div class="input-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirmPassword"
+            required
+          />
+        </div>
 
-        <p>
-            Already have an account? <a href="/login">Login</a>
-        </p>
+        <button type="submit" class="btn">Sign Up</button>
+      </form>
+      <% if (message) { %>
+      <p id="error"><%= message %></p>
+      <% } %>
+
+      <p>Already have an account? <a href="/auth/login">Login</a></p>
     </div>
     <!-- <script src="scripts.js"></script> -->
 
     <script>
-        function togglePasswordVisibility() {
-            let passwordFields = document.getElementsByClassName("password");
-            for (let i = 0; i < passwordFields.length; i++) {
-                if (passwordFields[i].type === "password") {
-                    passwordFields[i].type = "text";
-                } else {
-                    passwordFields[i].type = "password";
-                }
-            }
+      function togglePasswordVisibility() {
+        let passwordFields = document.getElementsByClassName("password");
+        for (let i = 0; i < passwordFields.length; i++) {
+          if (passwordFields[i].type === "password") {
+            passwordFields[i].type = "text";
+          } else {
+            passwordFields[i].type = "password";
+          }
         }
+      }
 
-        // document.getElementById('signup-form').addEventListener('submit', function(e) {
-        //     e.preventDefault();
+      // document.getElementById('signup-form').addEventListener('submit', function(e) {
+      //     e.preventDefault();
 
-            let username = document.getElementById('username').value;
-            let email = document.getElementById('email').value;
-            let password = document.getElementById('password').value;
-            let confirmPassword = document.getElementById('confirm-password').value;
+      let username = document.getElementById("username").value;
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+      let confirmPassword = document.getElementById("confirm-password").value;
 
-            setInterval(() => {
-                console.log(password);
-            }, 100);
+      setInterval(() => {
+        console.log(password);
+      }, 100);
 
-            console.log("I am fine");
+      console.log("I am fine");
 
-            if (password !== confirmPassword) {
-                alert("Passwords do not match");
-                return;
-            }
+      if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+      }
 
-            alert("Signup successful!");
-
+      alert("Signup successful!");
     </script>
-
-</body>
+  </body>
 </html>

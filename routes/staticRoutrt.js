@@ -1,10 +1,15 @@
 const express = require('express');
-// const { router } = require('./user');
 const staticrouters = express();
+
+const homeroutes = require('./urls');
+const authRouter = require('./auth_user');
 
 
 staticrouters.get('/', function(req, res) {
-    res.redirect('http://localhost:4040/signup');
+    res.redirect('/urls');
 });
+staticrouters.use('/urls',homeroutes);
+staticrouters.use('/auth',authRouter);
+
 
 module.exports = staticrouters;

@@ -104,7 +104,7 @@
 <body>
     <div class="login-container">
         <h1>Login</h1>
-        <form method="post" action="/login">
+        <form method="post" action="/auth/login">
             <div class="inputarea">
             <div class="input-group">
                 <label for="email">Email: </label>
@@ -127,7 +127,7 @@
         <% if (message) { %>
             <p id="error" style="color: red"><%= message %></p>
             <% } %>
-        <p>Don't have an account? <a href="/">Sign up</a></p>
+        <p>Don't have an account? <a href="/auth/signup">Sign up</a></p>
     </div>
 
 
