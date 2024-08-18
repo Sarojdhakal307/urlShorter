@@ -39,7 +39,7 @@ homeroutes.post("/", async (req, res) => {
     userUrl: body.userUrl,
     shortUrl: shortid,
     createdBy: req.user,
-    displayshortUrl: "http://localhost:4040/urls/" + shortid,
+    displayshortUrl: `${req.protocol}://${req.get('host')}/urls/${shortid}`,
   });
   console.log("urlsdata : " + urlsdata);
   urlsdata.save().then((data) => {

@@ -1,11 +1,14 @@
+require('dotenv').config()
+
 const express = require('express');
 const app = express();
-const PORT = 4040;
+const PORT = process.env.PORT;
 
 const {connectMongodb } = require('./connection');
 
 const cookies = require('cookie-parser');
-app.use(cookies())
+app.use(cookies());
+
 //connect Database
 connectMongodb()
 .then(()=> console.log('mongodb connection : successful'))
